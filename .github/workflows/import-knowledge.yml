@@ -1,0 +1,38 @@
+name: Import prepared knowledge base
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verify and extract prepared documents
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '0b4d124ca5f2c91d0c47993af994a9a6acdf7154c05a01bf36688a9cde5295aa  LLM_Study-content.zip' | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import PurePosixPath
+          from zipfile import ZipFile
+          allowed = {'Happy-LLM', 'Hello-Agents', 'Claude-Code-Source', 'agentic-rl-knowledge-base', 'Code-Agent-Knowledge-Base', 'ml-dl-foundations', '_LLM-Agent学习地图.md', 'README.md', '.gitignore'}
+          with ZipFile('LLM_Study-content.zip') as archive:
+              assert len(archive.infolist()) == 330
+              for entry in archive.infolist():
+                  path = PurePosixPath(entry.filename)
+                  assert not path.is_absolute() and '..' not in path.parts
+                  assert path.parts[0] in allowed
+                  assert path.suffix in {'.md', '.canvas'} or str(path) == '.gitignore'
+              archive.extractall('.')
+          PY
+      - name: Commit imported knowledge base
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- Happy-LLM Hello-Agents Claude-Code-Source agentic-rl-knowledge-base Code-Agent-Knowledge-Base ml-dl-foundations '_LLM-Agent学习地图.md' README.md .gitignore
+          git rm -- LLM_Study-content.zip
+          git commit -m 'Publish LLM and Agent learning knowledge base'
+          git push origin HEAD:main
