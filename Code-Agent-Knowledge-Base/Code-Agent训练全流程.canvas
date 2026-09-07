@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "id": "base",
+      "type": "text",
+      "text": "通用 Base",
+      "x": -900,
+      "y": -80,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "pretrain",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/03-训练阶段/01-Pre-train.md",
+      "x": -600,
+      "y": -120,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "midtrain",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/03-训练阶段/02-Mid-train.md",
+      "x": -260,
+      "y": -120,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "sft",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/03-训练阶段/03-SFT.md",
+      "x": 80,
+      "y": -120,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "rl",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/03-训练阶段/04-RL.md",
+      "x": 420,
+      "y": -120,
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "coder",
+      "type": "text",
+      "text": "Coder Model\n能读仓库、改代码、跑测试、根据反馈继续修",
+      "x": 760,
+      "y": -90,
+      "width": 300,
+      "height": 110
+    },
+    {
+      "id": "happy",
+      "type": "file",
+      "file": "Happy-LLM/00-总览.md",
+      "x": -600,
+      "y": 180,
+      "width": 260,
+      "height": 100
+    },
+    {
+      "id": "hello",
+      "type": "file",
+      "file": "Hello-Agents/00-总览.md",
+      "x": -260,
+      "y": 180,
+      "width": 260,
+      "height": 100
+    },
+    {
+      "id": "cc",
+      "type": "file",
+      "file": "Claude-Code-Source/00-总览.md",
+      "x": 80,
+      "y": 180,
+      "width": 260,
+      "height": 100
+    },
+    {
+      "id": "agenticrl",
+      "type": "file",
+      "file": "agentic-rl-knowledge-base/04-第4章-Code-Agentic-RL专题/00-章节总览.md",
+      "x": 420,
+      "y": 180,
+      "width": 300,
+      "height": 100
+    },
+    {
+      "id": "overview",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/00-总览.md",
+      "x": -80,
+      "y": -360,
+      "width": 300,
+      "height": 100
+    },
+    {
+      "id": "cases",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/06-案例与论文卡/00-章节总览.md",
+      "x": 760,
+      "y": 180,
+      "width": 300,
+      "height": 100
+    },
+    {
+      "id": "swegym",
+      "type": "file",
+      "file": "Code-Agent-Knowledge-Base/06-案例与论文卡/03-SWE-Gym与SWE-smith训练数据.md",
+      "x": 760,
+      "y": 340,
+      "width": 300,
+      "height": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "base",
+      "fromSide": "right",
+      "toNode": "pretrain",
+      "toSide": "left"
+    },
+    {
+      "id": "e2",
+      "fromNode": "pretrain",
+      "fromSide": "right",
+      "toNode": "midtrain",
+      "toSide": "left"
+    },
+    {
+      "id": "e3",
+      "fromNode": "midtrain",
+      "fromSide": "right",
+      "toNode": "sft",
+      "toSide": "left"
+    },
+    {
+      "id": "e4",
+      "fromNode": "sft",
+      "fromSide": "right",
+      "toNode": "rl",
+      "toSide": "left"
+    },
+    {
+      "id": "e5",
+      "fromNode": "rl",
+      "fromSide": "right",
+      "toNode": "coder",
+      "toSide": "left"
+    },
+    {
+      "id": "e6",
+      "fromNode": "happy",
+      "fromSide": "right",
+      "toNode": "hello",
+      "toSide": "left"
+    },
+    {
+      "id": "e7",
+      "fromNode": "hello",
+      "fromSide": "right",
+      "toNode": "cc",
+      "toSide": "left"
+    },
+    {
+      "id": "e8",
+      "fromNode": "cc",
+      "fromSide": "right",
+      "toNode": "agenticrl",
+      "toSide": "left"
+    },
+    {
+      "id": "e9",
+      "fromNode": "agenticrl",
+      "fromSide": "top",
+      "toNode": "rl",
+      "toSide": "bottom"
+    },
+    {
+      "id": "e10",
+      "fromNode": "overview",
+      "fromSide": "bottom",
+      "toNode": "midtrain",
+      "toSide": "top"
+    },
+    {
+      "id": "e11",
+      "fromNode": "agenticrl",
+      "fromSide": "right",
+      "toNode": "cases",
+      "toSide": "left"
+    },
+    {
+      "id": "e12",
+      "fromNode": "cases",
+      "fromSide": "bottom",
+      "toNode": "swegym",
+      "toSide": "top"
+    },
+    {
+      "id": "e13",
+      "fromNode": "swegym",
+      "fromSide": "left",
+      "toNode": "rl",
+      "toSide": "bottom"
+    }
+  ]
+}
